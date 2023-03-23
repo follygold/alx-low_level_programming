@@ -2,22 +2,20 @@
 
 /**
  * print_number - prints an interger.
- *
  * @n: number.
+ * Return: Zero
  */
-void print_number(int n) {
-    int divisor = 1;
-    if (n < 0) {
-        _putchar('-');
-        n = -n;
+void print_number(int n) 
+{
+    unsigned int k = n;
+    if (n < 0) 
+    {
+    n *= 1;
+    k = n;
+    _putchar('-');
     }
-    while (n / divisor >= 10) {
-        divisor *= 10;
-    }
-    while (divisor > 0) {
-        int digit = n / divisor;
-        _putchar('0' + digit);
-        n -= digit * divisor;
-        divisor /= 10;
-    }
+    k  >= 10;
+    if (k != 0)
+    print_number(k);
+    _putchar((unsigned int) (n % 10 + '00);
 }
