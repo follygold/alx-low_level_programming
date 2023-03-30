@@ -1,37 +1,29 @@
 #include "main.h"
 
 /**
- * *leet - check the code for Holberton School students.
+ * leet - encodes a string in 1337
+ * @s: string to be encoded
  *
- * @str: string.
- * Return: string.
+ * Return: the resulting string;
  */
-char *leet(char *str)
+char *leet(char *s)
 {
-	int i;
+	int i, j;
 
-	for (i = 0; str[i] != '\0'; i++)
+	char *a = "aAeEoOtTlL";
+	char *b = "4433007711";
+
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (str[i] == 'a' || str[i] == 'A')
+		for (j = 0; j < 10; j++)
 		{
-			str[i] = '4';
-		}
-		else if (str[i] == 'e' || str[i] == 'E')
-		{
-			str[i] = '3';
-		}
-		else if (str[i] == 'o' || str[i] == 'O')
-		{
-			str[i] = '0';
-		}
-		else if (str[i] == 't' || str[i] == 'T')
-		{
-			str[i] = '7';
-		}
-		else if (str[i] == 'l' || str[i] == 'L')
-		{
-			str[i] = '1';
+			if (s[i] == a[j])
+			{
+				s[i] = b[j];
+			}
 		}
 	}
-	return (str);
+
+	return (s);
 }
+
