@@ -1,19 +1,22 @@
+#include <stdio.h>
 #include "lists.h"
+
 /**
- * print_listint - prints integers in list
- * @h: struct listint_t type
- * Return: size_t value
+ * print_listint - Prints all elements of a listint_t list.
+ *
+ * @h: pointer to head.
+ * Return: Number of nodes.
  */
 size_t print_listint(const listint_t *h)
 {
-	size_t count = 0;
+	const listint_t *temp = h;
+	int counter = 0;
 
-	while (h != NULL)
+	while (temp != NULL)
 	{
-		printf("%d\n", h->n);
-		count++;
-		h = h->next;
+		printf("%d\n", temp->n);
+		temp = temp->next;
+		counter++;
 	}
-
-	return (count);
+	return (counter);
 }
