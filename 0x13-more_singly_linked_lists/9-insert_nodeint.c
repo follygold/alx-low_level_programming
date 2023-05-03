@@ -1,23 +1,46 @@
-#include <stdlib.h>
 #include "lists.h"
 
 /**
- * *get_nodeint_at_index - returns the nth node of a linked list.
+ * insert_nodeint_at_index - inserts a new node in a linked list,
+ * at a given position
+ * @head: pointer to the first node in the list
+ * @idx: index where the new node is added
+ * @n: data to insert in the new node
  *
- * @head: pointer to first elements.
- * @index: index of the nth node.
- * Return: return nth node of a linked list.
+ * Return: pointer to the new node, or NULL
  */
-listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	unsigned int count;
-	listint_t *currentnode = head;
+	unsigned int i;
+	listint_t *new;
+	listint_t *temp = *head;
 
-	for (count = 0; currentnode != NULL; count++)
+	new = malloc(sizeof(listint_t));
+	if (!new || !head)
+		return (NULL);
+
+	new->n = n;
+	new->next = NULL;
+
+	if (idx == 0)
 	{
-		if (count == index)
-			return (currentnode);
-		currentnode = currentnode->next;
+		new->next = *head;
+		*head = new;
+		return (new);
 	}
+
+	for (i = 0; temp && i < idx; i++)
+	{
+		if (i == idx - 1)
+		{
+			new->next = temp->next;
+			temp->next = new;
+			return (new);
+		}
+		else
+			temp = temp->next;
+	}
+
 	return (NULL);
 }
+
